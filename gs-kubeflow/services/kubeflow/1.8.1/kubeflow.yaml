@@ -20,15 +20,156 @@ spec:
   wait: true
   retryInterval: 5m
   images:
+  # ===== Cert-Manager =====
+  - name: quay.io/jetstack/cert-manager-controller
+    newName: harbor.kolon.local/kubeflow/cert-manager-controller
+    newTag: v1.19.4
+  - name: quay.io/jetstack/cert-manager-cainjector
+    newName: harbor.kolon.local/kubeflow/cert-manager-cainjector
+    newTag: v1.19.4
+  - name: quay.io/jetstack/cert-manager-webhook
+    newName: harbor.kolon.local/kubeflow/cert-manager-webhook
+    newTag: v1.19.4
+  # ===== Istio =====
+  - name: gcr.io/istio-release/pilot
+    newName: harbor.kolon.local/kubeflow/pilot
+    newTag: 1.28.0
+  - name: gcr.io/istio-release/proxyv2
+    newName: harbor.kolon.local/kubeflow/proxyv2
+    newTag: 1.28.0
+  - name: gcr.io/istio-release/install-cni
+    newName: harbor.kolon.local/kubeflow/install-cni
+    newTag: 1.28.0
+  - name: gcr.io/istio-release/ztunnel
+    newName: harbor.kolon.local/kubeflow/ztunnel
+    newTag: 1.28.0
+  # ===== Dex / OAuth2-Proxy =====
+  - name: ghcr.io/dexidp/dex
+    newName: harbor.kolon.local/kubeflow/dex
+    newTag: v2.45.0
+  - name: quay.io/oauth2-proxy/oauth2-proxy
+    newName: harbor.kolon.local/kubeflow/oauth2-proxy
+    newTag: v7.14.3
+  # ===== Kubeflow Core =====
+  - name: ghcr.io/kubeflow/kubeflow/central-dashboard
+    newName: harbor.kolon.local/kubeflow/central-dashboard
+    newTag: v1.10.0
+  - name: ghcr.io/kubeflow/kubeflow/jupyter-web-app
+    newName: harbor.kolon.local/kubeflow/jupyter-web-app
+    newTag: v1.10.0
+  - name: ghcr.io/kubeflow/kubeflow/notebook-controller
+    newName: harbor.kolon.local/kubeflow/notebook-controller
+    newTag: v1.10.0
+  - name: ghcr.io/kubeflow/kubeflow/profile-controller
+    newName: harbor.kolon.local/kubeflow/profile-controller
+    newTag: v1.10.0
+  - name: ghcr.io/kubeflow/kubeflow/kfam
+    newName: harbor.kolon.local/kubeflow/kfam
+    newTag: v1.10.0
+  - name: ghcr.io/kubeflow/kubeflow/poddefaults-webhook
+    newName: harbor.kolon.local/kubeflow/poddefaults-webhook
+    newTag: v1.10.0
+  - name: ghcr.io/kubeflow/kubeflow/volumes-web-app
+    newName: harbor.kolon.local/kubeflow/volumes-web-app
+    newTag: v1.10.0
+  - name: ghcr.io/kubeflow/kubeflow/pvcviewer-controller
+    newName: harbor.kolon.local/kubeflow/pvcviewer-controller
+    newTag: v1.10.0
+  - name: ghcr.io/kubeflow/kubeflow/tensorboard-controller
+    newName: harbor.kolon.local/kubeflow/tensorboard-controller
+    newTag: v1.10.0
+  - name: ghcr.io/kubeflow/kubeflow/tensorboards-web-app
+    newName: harbor.kolon.local/kubeflow/tensorboards-web-app
+    newTag: v1.10.0
+  # ===== KFP (Kubeflow Pipelines) =====
   - name: gcr.io/ml-pipeline/api-server
-    newName: quay.io/ajaynagar/kubeflow-ntnx/kfp-backend
+    newName: harbor.kolon.local/kubeflow/kfp-backend
     newTag: 2.0.3
   - name: gcr.io/ml-pipeline/frontend
-    newName: quay.io/ajaynagar/kubeflow-ntnx/kfp-frontend
+    newName: harbor.kolon.local/kubeflow/kfp-frontend
     newTag: 2.0.3
   - name: gcr.io/ml-pipeline/metadata-writer
-    newName: quay.io/ajaynagar/kubeflow-ntnx/kfp-metadata-writer
+    newName: harbor.kolon.local/kubeflow/kfp-metadata-writer
     newTag: 2.0.3
+  - name: ghcr.io/kubeflow/kfp-api-server
+    newName: harbor.kolon.local/kubeflow/kfp-api-server
+  - name: ghcr.io/kubeflow/kfp-frontend
+    newName: harbor.kolon.local/kubeflow/kfp-frontend
+  - name: ghcr.io/kubeflow/kfp-persistence-agent
+    newName: harbor.kolon.local/kubeflow/kfp-persistence-agent
+  - name: ghcr.io/kubeflow/kfp-scheduled-workflow-controller
+    newName: harbor.kolon.local/kubeflow/kfp-scheduled-workflow-controller
+  - name: ghcr.io/kubeflow/kfp-cache-server
+    newName: harbor.kolon.local/kubeflow/kfp-cache-server
+  - name: ghcr.io/kubeflow/kfp-cache-deployer
+    newName: harbor.kolon.local/kubeflow/kfp-cache-deployer
+  - name: ghcr.io/kubeflow/kfp-metadata-envoy
+    newName: harbor.kolon.local/kubeflow/kfp-metadata-envoy
+  - name: ghcr.io/kubeflow/kfp-metadata-writer
+    newName: harbor.kolon.local/kubeflow/kfp-metadata-writer
+  - name: ghcr.io/kubeflow/kfp-viewer-crd-controller
+    newName: harbor.kolon.local/kubeflow/kfp-viewer-crd-controller
+  - name: ghcr.io/kubeflow/kfp-visualization-server
+    newName: harbor.kolon.local/kubeflow/kfp-visualization-server
+  - name: ghcr.io/kubeflow/kfp-inverse-proxy-agent
+    newName: harbor.kolon.local/kubeflow/kfp-inverse-proxy-agent
+  - name: gcr.io/tfx-oss-public/ml_metadata_store_server
+    newName: harbor.kolon.local/kubeflow/ml_metadata_store_server
+    newTag: 1.14.0
+  - name: gcr.io/ml-pipeline/application-crd-controller
+    newName: harbor.kolon.local/kubeflow/application-crd-controller
+    newTag: "20231101"
+  - name: quay.io/argoproj/workflow-controller
+    newName: harbor.kolon.local/kubeflow/workflow-controller
+    newTag: v3.7.3
+  - name: chrislusf/seaweedfs
+    newName: harbor.kolon.local/kubeflow/seaweedfs
+    newTag: "4.00"
+  # ===== Katib =====
+  - name: ghcr.io/kubeflow/katib/katib-controller
+    newName: harbor.kolon.local/kubeflow/katib-controller
+    newTag: v0.19.0
+  - name: ghcr.io/kubeflow/katib/katib-db-manager
+    newName: harbor.kolon.local/kubeflow/katib-db-manager
+    newTag: v0.19.0
+  - name: ghcr.io/kubeflow/katib/katib-ui
+    newName: harbor.kolon.local/kubeflow/katib-ui
+    newTag: v0.19.0
+  # ===== KServe =====
+  - name: kserve/kserve-controller
+    newName: harbor.kolon.local/kubeflow/kserve-controller
+    newTag: v0.16.0
+  - name: ghcr.io/kserve/models-web-app
+    newName: harbor.kolon.local/kubeflow/models-web-app
+    newTag: "0.16.0"
+  - name: kserve/storage-initializer
+    newName: harbor.kolon.local/kubeflow/kserve-storage-initializer
+    newTag: v0.16.0
+  # ===== Training / Trainer =====
+  - name: ghcr.io/kubeflow/training-v1/training-operator
+    newName: harbor.kolon.local/kubeflow/training-operator
+    newTag: v2.1.0
+  - name: ghcr.io/kubeflow/trainer/trainer-controller-manager
+    newName: harbor.kolon.local/kubeflow/trainer-controller-manager
+    newTag: v1-3f15cb8
+  # ===== Spark =====
+  - name: ghcr.io/kubeflow/spark-operator/controller
+    newName: harbor.kolon.local/kubeflow/spark-operator-controller
+    newTag: 2.5.0-rc.0
+  # ===== Utilities =====
+  - name: ghcr.io/containerd/busybox
+    newName: harbor.kolon.local/kubeflow/busybox
+  - name: docker.io/bitnamisecure/kubectl
+    newName: harbor.kolon.local/kubeflow/kubectl
+  - name: ghcr.io/metacontroller/metacontroller
+    newName: harbor.kolon.local/kubeflow/metacontroller
+    newTag: v4.11.22
+  - name: mysql
+    newName: harbor.kolon.local/kubeflow/mysql
+    newTag: "8.3"
+  - name: postgres
+    newName: harbor.kolon.local/kubeflow/postgres
+    newTag: 16-alpine
   patches:
   - patch: |      
       $patch: delete   
@@ -235,7 +376,7 @@ spec:
               - name: FRONTEND_TAG
                 value: 2.0.3
               - name: FRONTEND_IMAGE
-                value: quay.io/ajaynagar/kubeflow-ntnx/kfp-frontend
+                value: harbor.kolon.local/kubeflow/kfp-frontend
     target:
       kind: Deployment
       name: kubeflow-pipelines-profile-controller
