@@ -24,6 +24,7 @@ spec:
   ref:
     branch: main
   timeout: 1m0s
-  url: https://github.com/seongtaemin/kubeflow.git
+  url: http://172.18.229.52:3000/gitea/kubeflow.git
 EOF
 ```
+

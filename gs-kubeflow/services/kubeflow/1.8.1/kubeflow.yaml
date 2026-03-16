@@ -9,7 +9,7 @@ spec:
   ref:
     branch: main
   timeout: 15m0s
-  url: https://github.com/seongtaemin/kubeflow.git
+  url: http://172.18.229.52:3000/gitea/kubeflow.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -403,4 +403,5 @@ spec:
    name: kubeflow-instance
    namespace: ${releaseNamespace}
 ---
+
 
