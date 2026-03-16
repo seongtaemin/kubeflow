@@ -1,0 +1,94 @@
+version: "2"
+run:
+  build-tags:
+    - api
+    - cli
+    - cron
+    - executor
+    - examples
+    - corefunctional
+    - functional
+    - plugins
+linters:
+  enable:
+    - asasalint
+    - bidichk
+    - bodyclose
+    - copyloopvar
+    - errcheck
+    - gosec
+    - govet
+    - ineffassign
+    - misspell
+    - nakedret
+    - nosprintfhostport
+    - reassign
+    - rowserrcheck
+    - sqlclosecheck
+    - staticcheck
+    - testifylint
+    - unparam
+    - unused
+  settings:
+    gosec:
+      includes:
+        - G304
+        - G307
+      excludes:
+        # G106: Use of ssh InsecureIgnoreHostKey should be audited
+        - G106
+        # G402: TLS InsecureSkipVerify set true
+        - G402
+    staticcheck:
+      checks:
+        - all
+        # Capitalised error strings
+        - "-ST1005"
+    govet:
+      enable: [nilness]
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    rules:
+      - path: server/artifacts/artifact_server_test.go
+        text: response body must be closed
+    paths:
+      - dist
+      - docs
+      - examples
+      - hack
+      - manifests
+      - pkg/client
+      - sdks
+      - ui
+      - vendor
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  enable:
+    - gofmt
+    - goimports
+  settings:
+    goimports:
+      local-prefixes:
+        - github.com/argoproj/argo-workflows/
+  exclusions:
+    generated: lax
+    paths:
+      - dist
+      - docs
+      - examples
+      - hack
+      - manifests
+      - pkg/client
+      - sdks
+      - ui
+      - vendor
+      - third_party$
+      - builtin$
+      - examples$
