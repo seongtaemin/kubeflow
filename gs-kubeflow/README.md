@@ -24,7 +24,8 @@ spec:
   ref:
     branch: main
   timeout: 1m0s
-  url: http://172.18.229.52:3000/gitea/kubeflow.git
+  url: http://172.18.228.224:3000/gitea/kubeflow.git
 EOF
 ```
+
 

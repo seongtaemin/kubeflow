@@ -1,0 +1,13 @@
+apiVersion: apps.kommander.d2iq.io/v1alpha1
+kind: App
+metadata:
+  name: kubeflow
+  namespace: kommander
+spec:
+  displayName: Kubeflow
+  description: Kubeflow is a free and open-source platform for machine learning on Kubernetes.
+  versions:
+    - name: v1.8.1
+      path: services/kubeflow/1.8.1
+    - name: v1.6.1
+      path: services/kubeflow/1.6.1
