@@ -24,6 +24,6 @@ spec:
   ref:
     branch: main
   timeout: 1m0s
-  url: https://github.com/arbhoj/gs-kubeflow
+  url: https://github.com/seongtaemin/kubeflow.git
 EOF
 ```

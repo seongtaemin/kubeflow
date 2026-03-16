@@ -7,9 +7,9 @@ metadata:
 spec:
   interval: 1m0s
   ref:
-    tag: v1.8.1
+    branch: main
   timeout: 15m0s
-  url: https://github.com/kubeflow/manifests
+  url: https://github.com/seongtaemin/kubeflow.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
@@ -255,7 +255,7 @@ spec:
       name: pipeline-install-config       
   interval: 6h
   timeout: 15m0s
-  path: ./example
+  path: ./manifests/example
   prune: false
   sourceRef:
    kind: GitRepository

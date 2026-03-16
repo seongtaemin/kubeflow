@@ -1,0 +1,14 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: kubeflow-catalog
+  namespace: kommander
+  labels:
+    kommander.d2iq.io/gitapps-gitrepository-type: catalog
+    kommander.d2iq.io/gitrepository-type: catalog
+spec:
+  interval: 1m0s
+  ref:
+    branch: main
+  timeout: 1m0s
+  url: https://github.com/seongtaemin/kubeflow.git
